@@ -37,4 +37,14 @@ get("/square/results") do
      @payment_result = (@the_apr_unit*@the_principal) / (1-(1+@the_apr_unit)**(@the_year_unit*-1))
     erb(:payment_results)
     end
- 
+
+    get("/random/new") do
+      erb(:new_random)
+     end
+     
+     get("/random/results") do
+       @the_min= params.fetch("min_input").to_f
+       @the_max= params.fetch("max_input").to_f
+       @random_result = rand(@the_min..@the_max)
+       erb(:random_results)
+      end
